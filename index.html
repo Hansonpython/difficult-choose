@@ -21,7 +21,7 @@
 
         var generateImage = function (fname) {
             return new Promise(resolve => {
-                fetch(`/${fname}.jpg`).then(resp => {
+                fetch(`./${fname}.jpg`).then(resp => {
                     if (!resp.ok) {
                         resolve(defaultImageDataUrl);
                     } else {
