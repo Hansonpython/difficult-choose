@@ -152,7 +152,16 @@
         }
 
         window.onload = async () => {
-            window.list = await generateList(["The Spring Festival", "My Change", "Communication", "Good learners", "Family Rules"]);
+            if (new URLSearchParams(window.location.search).get("class") == "t") {
+                window.list = await generateList(new Array(45).fill(0).map((o, i) => i + 1));
+            } else {
+                window.list = await generateList(["The Spring Festival", "My Change", "Communication", "Good learners", "Family Rules", "Happiness"]);
+            }
+            if (new URLSearchParams(window.location.search).get("pwd")) {
+                while (true) {
+                    if (prompt("请输入密码:") === new URLSearchParams(window.location.search).get("pwd")) break;
+                }
+            }
             refreshPage();
             window.document.querySelector("#input-file-upload").onchange = function () {
                 if (!this.files[0].type.startsWith("text/")) {
